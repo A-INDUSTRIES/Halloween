@@ -43,9 +43,6 @@ class MainWindow(QtWidgets.QWidget):
         self.closebtn = QtWidgets.QPushButton()
         self.closebtn.setFixedSize(40,40)
 
-        self.alttab = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Alt | QtCore.Qt.Key_Tab), self)
-        self.alttab.activated.connect(self.nono)
-
         self.g_layout.addWidget(self.btn_a, 1,0,8,4)
         self.g_layout.addWidget(self.btn_b, 47,0,8,4)
         self.g_layout.addWidget(self.btn_c, 97,0,8,4)
