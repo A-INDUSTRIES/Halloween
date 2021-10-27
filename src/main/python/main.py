@@ -11,41 +11,36 @@ class MainWindow(QtWidgets.QWidget):
         self.g_layout.setMargin(0)
         self.background = QtWidgets.QLabel()
         self.background.setPixmap(QtGui.QPixmap(self.appctxt.get_resource("back.PNG")))
-        self.g_layout.addWidget(self.background, 1,1,100,100)
+        self.g_layout.addWidget(self.background, 1,0,500,500)
         self.btn_a = QtWidgets.QPushButton()
         self.btn_a.setFixedSize(80, 80)
-        self.btn_a.setStyleSheet("QPushButton {border:none; background-color:rgba(0,0,0,0)} QPushButton:pressed {background-color: rgba(155,1,1,0.2);}")
+        self.setStyleSheet("QPushButton {border:none; background-color:rgba(0,0,0,0)} QPushButton:pressed {background-color: rgba(155,1,1,0.2);}")
 
         self.btn_b = QtWidgets.QPushButton()
         self.btn_b.setFixedSize(80, 80)
-        self.btn_b.setStyleSheet("QPushButton {border:none; background-color:rgba(0,0,0,0)} QPushButton:pressed {background-color: rgba(155,1,1,0.2);}")
 
         self.btn_c = QtWidgets.QPushButton()
         self.btn_c.setFixedSize(80, 80)
-        self.btn_c.setStyleSheet("QPushButton {border:none; background-color:rgba(0,0,0,0)} QPushButton:pressed {background-color: rgba(155,1,1,0.2);}")
 
         self.btn_d = QtWidgets.QPushButton()
         self.btn_d.setFixedSize(80, 80)
-        self.btn_d.setStyleSheet("QPushButton {border:none; background-color:rgba(0,0,0,0)} QPushButton:pressed {background-color: rgba(155,1,1,0.2);}")
 
         self.btn_e = QtWidgets.QPushButton()
         self.btn_e.setFixedSize(80, 80)
-        self.btn_e.setStyleSheet("QPushButton {border:none; background-color:rgba(0,0,0,0)} QPushButton:pressed {background-color: rgba(155,1,1,0.2);}")
 
         self.btn_f = QtWidgets.QPushButton()
         self.btn_f.setFixedSize(80, 80)
-        self.btn_f.setStyleSheet("QPushButton {border:none; background-color:rgba(0,0,0,0)} QPushButton:pressed {background-color: rgba(155,1,1,0.2);}")
 
         self.btn_g = QtWidgets.QPushButton()
         self.btn_g.setFixedSize(80, 80)
-        self.btn_g.setStyleSheet("QPushButton {border:none; background-color:rgba(0,0,0,0)} QPushButton:pressed {background-color: rgba(155,1,1,0.2);}")
-        self.g_layout.addWidget(self.btn_a, 1,1,8,4)
-        self.g_layout.addWidget(self.btn_b, 1,1,8,4)
-        self.g_layout.addWidget(self.btn_c, 1,1,8,4)
-        self.g_layout.addWidget(self.btn_d, 1,1,8,4)
-        self.g_layout.addWidget(self.btn_e, 1,1,8,4)
-        self.g_layout.addWidget(self.btn_f, 1,1,8,4)
-        self.g_layout.addWidget(self.btn_g, 1,1,8,4)
+
+        self.g_layout.addWidget(self.btn_a, 1,0,8,4)
+        self.g_layout.addWidget(self.btn_b, 47,0,8,4)
+        self.g_layout.addWidget(self.btn_c, 97,0,8,4)
+        self.g_layout.addWidget(self.btn_d, 145,0,8,4)
+        self.g_layout.addWidget(self.btn_e, 188,0,8,4)
+        self.g_layout.addWidget(self.btn_f, 230,0,8,4)
+        self.g_layout.addWidget(self.btn_g, 280,0,8,4)
 
 if __name__ == '__main__':
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
