@@ -159,8 +159,8 @@ class Pidgin(QtWidgets.QWidget):
 
     def nono(self):
         self.win = QtWidgets.QMessageBox()
-        self.win.setText("I'm afraid you are not authorised to do this.")
-        self.win.setWindowTitle("NOT IN GAME")
+        self.win.setText("Acess Denied.")
+        self.win.setWindowTitle("Error")
         self.win.setIcon(QtWidgets.QMessageBox.Critical)
         self.win.show()
 
