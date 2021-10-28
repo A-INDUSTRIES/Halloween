@@ -9,9 +9,11 @@ HACKED = False
 class MainWindow(QtWidgets.QWidget):
     def __init__(self, appctxt):
         super().__init__()
+        self.canc = False
         self.appctxt = appctxt
         self.g_layout = QtWidgets.QGridLayout(self)
         self.g_layout.setMargin(0)
+        self.g_layout.setContentsMargins(0,0,0,0)
         self.background = QtWidgets.QLabel()
         self.background.setPixmap(QtGui.QPixmap(self.appctxt.get_resource("back.PNG")))
         self.background.setAlignment(QtCore.Qt.AlignTop)
@@ -95,7 +97,11 @@ class MainWindow(QtWidgets.QWidget):
         self.win.show()
 
     def closeEvent(self, event: QtGui.QCloseEvent):
-        self.nono()
+        self.canclo = Exit()
+        self.canclo.show()
+        self.canclo.code.textChanged.connect(self.canclose)
+        if self.canc:
+            return event.accept()
         return event.ignore()
     
     def nono(self):
@@ -114,11 +120,15 @@ class MainWindow(QtWidgets.QWidget):
     def hacker(self):
         global HACKED
         HACKED = True
-        self.wtfha = QtWidgets.QLabel("What just happenned????")
-        self.wtfha.setFont(QtGui.QFont("Bell MT", 25))
-        self.wtfha.setStyleSheet("QLabel {color: white;}")
-        self.g_layout.addWidget(self.wtfha, 275, 0, 1, 315)
-        self.wtfha.setAlignment(QtCore.Qt.AlignCenter)
+        self.ww = Ww()
+        self.ww.showNormal()
+        if not self.pidwin == None:
+            self.pidwin.menu_files.addAction(self.pidwin.action_code)
+
+    def canclose(self):
+        if self.canclo.code.text() == "AdminPro5690":
+            self.canc = True
+            self.close()
 
 class Pidgin(QtWidgets.QWidget):
     def __init__(self):
@@ -136,9 +146,9 @@ class Pidgin(QtWidgets.QWidget):
         self.action_open = QtWidgets.QAction("Open")
         self.action_open.triggered.connect(self.nono)
         self.action_exit = QtWidgets.QAction("Exit")
-        self.action_exit.triggered.connect(self.nono)
+        self.action_exit.triggered.connect(self.close)
         self.action_code = QtWidgets.QAction("huilHè_tyè")
-        self.action_code.triggered.connect(self.nono)
+        self.action_code.triggered.connect(self.code)
 
         self.menu_files = self.menu.addMenu("Files")
 
@@ -153,6 +163,45 @@ class Pidgin(QtWidgets.QWidget):
         self.win.setWindowTitle("NOT IN GAME")
         self.win.setIcon(QtWidgets.QMessageBox.Critical)
         self.win.show()
+
+    def code(self):
+        self.pop = QtWidgets.QMessageBox()
+        self.pop.setWindowTitle("YEAAAAAAAAH!")
+        self.pop.setText("CONGRATS YOU FOUND ME!")  #ADD THE THINGY THAT NEEDS TO BE ADDED!!!!
+        self.pop.setIcon(QtWidgets.QMessageBox.Information)
+        self.pop.show()
+        self.close()
+
+class Ww(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setFixedSize(500,75)
+        self.setWindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.wtfha = QtWidgets.QLabel("What just happenned????")
+        self.wtfha.setFont(QtGui.QFont("Bell MT", 25))
+        self.wtfha.setStyleSheet("QLabel {color: white;}")
+        self.wtfha.setAlignment(QtCore.Qt.AlignCenter)
+        self.vl = QtWidgets.QVBoxLayout(self)
+        self.vl.addWidget(self.wtfha)
+        self.qtRectangle = self.frameGeometry()
+        self.centerPoint = QtWidgets.QDesktopWidget().availableGeometry().center()
+        self.qtRectangle.moveCenter(self.centerPoint)
+        self.move(self.qtRectangle.bottomLeft())
+        self.timer = QtCore.QTimer()
+        self.timer.setInterval(3500)
+        self.timer.setSingleShot(True)
+        self.timer.timeout.connect(self.close)
+        self.timer.start()
+
+class Exit(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Quit? Give admin password")
+        self.code = QtWidgets.QLineEdit()
+        self.la = QtWidgets.QVBoxLayout(self)
+        self.la.addWidget(self.code)
+        self.code.setEchoMode(QtWidgets.QLineEdit.Password)
 
 if __name__ == '__main__':
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
